@@ -14,7 +14,7 @@ const Navbar = ({ activeTab, setActiveTab, user, language, setLanguage, t }) => 
                 </div>
 
                 {/* Center Links */}
-                <div className="nav-links" style={{ display: 'flex', gap: '5px' }}>
+                <div className="nav-links">
                     {[
                         { id: 'home', label: t('nav_home') },
                         { id: 'track', label: t('nav_track') },
@@ -87,10 +87,16 @@ const Navbar = ({ activeTab, setActiveTab, user, language, setLanguage, t }) => 
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     cursor: 'pointer',
-                                    color: 'white'
+                                    color: 'white',
+                                    padding: 0,
+                                    overflow: 'hidden'
                                 }}
                             >
-                                <User size={18} />
+                                {user.profilePhoto ? (
+                                    <img src={user.profilePhoto} alt="Me" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                ) : (
+                                    <User size={18} />
+                                )}
                             </button>
                         </div>
                     ) : (

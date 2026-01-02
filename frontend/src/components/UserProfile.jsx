@@ -1,28 +1,101 @@
-import React from 'react';
-import { User, Phone, LogOut, Shield, Award } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { User, Phone, LogOut, Shield, Award, Camera, CheckCircle } from 'lucide-react';
 
-const UserProfile = ({ user, onLogout, t }) => {
+const UserProfile = ({ user, onLogout, setUser, t }) => {
+    const [showSuccess, setShowSuccess] = useState(false);
+    const fileInputRef = useRef(null);
+
     if (!user) return null;
+
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setUser({ ...user, profilePhoto: reader.result });
+                setShowSuccess(true);
+                setTimeout(() => setShowSuccess(false), 3000);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const triggerUpload = () => {
+        fileInputRef.current.click();
+    };
 
     return (
         <div className="page-card animate-fade-in" style={{ maxWidth: '600px', margin: '2rem auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <div style={{
-                    width: '100px',
-                    height: '100px',
-                    background: 'var(--brand-primary)',
-                    borderRadius: '50%',
-                    margin: '0 auto 1rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '2.5rem',
-                    fontWeight: 'bold',
-                    boxShadow: '0 10px 20px rgba(49, 130, 206, 0.3)'
-                }}>
-                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                <div
+                    onClick={triggerUpload}
+                    style={{
+                        width: '120px',
+                        height: '120px',
+                        background: 'var(--brand-primary)',
+                        borderRadius: '50%',
+                        margin: '0 auto 1.5rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        fontSize: '3rem',
+                        fontWeight: 'bold',
+                        boxShadow: '0 10px 25px rgba(49, 130, 206, 0.3)',
+                        cursor: 'pointer',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        border: '4px solid white'
+                    }}
+                    className="profile-photo-container"
+                >
+                    {user.profilePhoto ? (
+                        <img
+                            src={user.profilePhoto}
+                            alt="Profile"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                    ) : (
+                        user.name ? user.name.charAt(0).toUpperCase() : 'U'
+                    )}
+                    <div className="photo-overlay" style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '35%',
+                        background: 'rgba(0,0,0,0.5)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        transition: '0.3s'
+                    }}>
+                        <Camera size={20} color="white" />
+                    </div>
                 </div>
+
+                <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handlePhotoChange}
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                />
+
+                {showSuccess && (
+                    <div style={{
+                        color: '#38a169',
+                        fontSize: '0.9rem',
+                        marginBottom: '1rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '5px'
+                    }}>
+                        <CheckCircle size={16} /> {t('profile_photo_success')}
+                    </div>
+                )}
+
                 <h2 style={{ fontSize: '1.8rem', fontWeight: 700, color: 'var(--brand-dark)' }}>
                     {user.name || 'User'}
                 </h2>

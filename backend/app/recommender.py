@@ -201,7 +201,7 @@ def get_recommendations(profile):
             })
 
     # 5. Sort & Return
-    scored_schemes.sort(key=lambda x: x['score'], reverse=True)
+    scored_schemes.sort(key=lambda x: x['matchScore'], reverse=True)
     
     if not scored_schemes:
         return [{

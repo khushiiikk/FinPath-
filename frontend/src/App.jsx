@@ -56,7 +56,7 @@ function App() {
       case 'about':
         return <About t={t} />;
       case 'profile':
-        return <UserProfile user={user} onLogout={handleLogout} t={t} language={language} />;
+        return <UserProfile user={user} onLogout={handleLogout} setUser={setUser} t={t} language={language} />;
       default:
         return <Home setActiveTab={handleTabChange} t={t} />;
     }
