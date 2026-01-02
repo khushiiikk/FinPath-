@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Mic, MicOff, Send, DollarSign, Tag, Clock, Trash2, PlusCircle, Volume2, Keyboard } from 'lucide-react';
 
-const ExpenseTracker = () => {
+const ExpenseTracker = ({ t }) => {
     const [isListening, setIsListening] = useState(false);
     const [transcript, setTranscript] = useState('');
     const [expenses, setExpenses] = useState([]);
@@ -128,9 +128,9 @@ const ExpenseTracker = () => {
             <div className="page-header">
                 <h2 className="page-title" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
                     <DollarSign size={32} className="text-brand-primary" />
-                    Expense Manager
+                    {t('exp_title')}
                 </h2>
-                <p className="page-subtitle">Track your daily spending via Voice or Text</p>
+                <p className="page-subtitle">{t('exp_subtitle')}</p>
             </div>
 
             {/* Total Balance Card */}
@@ -146,9 +146,9 @@ const ExpenseTracker = () => {
                 alignItems: 'center'
             }}>
                 <div>
-                    <h3 style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Total Spent</h3>
+                    <h3 style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{t('exp_total_spent')}</h3>
                     <div style={{ fontSize: '3rem', fontWeight: 700, fontFamily: 'var(--font-serif)' }}>
-                        ₹{totalSpent}
+                        ₹{totalSpent.toLocaleString('en-IN')}
                     </div>
                 </div>
                 <div style={{ background: 'rgba(255,255,255,0.2)', padding: '1rem', borderRadius: '50%' }}>
@@ -174,7 +174,7 @@ const ExpenseTracker = () => {
                         transition: 'all 0.3s'
                     }}
                 >
-                    <Volume2 size={18} /> Voice Input
+                    <Volume2 size={18} /> {t('exp_mode_voice')}
                 </button>
                 <button
                     onClick={() => setMode('manual')}
@@ -192,7 +192,7 @@ const ExpenseTracker = () => {
                         transition: 'all 0.3s'
                     }}
                 >
-                    <Keyboard size={18} /> Type Expense
+                    <Keyboard size={18} /> {t('exp_mode_manual')}
                 </button>
             </div>
 
@@ -226,7 +226,7 @@ const ExpenseTracker = () => {
                         </button>
 
                         <p style={{ marginTop: '1.5rem', fontSize: '1.1rem', color: '#666', fontWeight: 500 }}>
-                            {isListening ? "Listening... Try 'Spent 1500 on Grocery'" : "Tap mic to speak"}
+                            {isListening ? t('exp_listening') : t('exp_tap_mic')}
                         </p>
 
                         {transcript && (
@@ -242,7 +242,7 @@ const ExpenseTracker = () => {
                                 type="text"
                                 value={manualInput}
                                 onChange={(e) => setManualInput(e.target.value)}
-                                placeholder="E.g. Spent 500 for Taxi"
+                                placeholder={t('exp_placeholder')}
                                 className="form-input"
                                 style={{ paddingRight: '50px' }}
                                 autoFocus
@@ -269,7 +269,7 @@ const ExpenseTracker = () => {
                             </button>
                         </div>
                         <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.5rem', textAlign: 'center' }}>
-                            Format: "Spent [amount] on [item]"
+                            {t('exp_format_hint')}
                         </p>
                     </form>
                 )}
@@ -278,7 +278,7 @@ const ExpenseTracker = () => {
             {/* Recent Expenses List */}
             <div>
                 <h3 className="page-subtitle" style={{ textAlign: 'left', marginBottom: '1.5rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Clock size={20} /> Recent Transactions
+                    <Clock size={20} /> {t('exp_recent')}
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -291,7 +291,7 @@ const ExpenseTracker = () => {
                             color: '#999',
                             border: '2px dashed #e2e8f0'
                         }}>
-                            <p>No expenses recorded yet.</p>
+                            <p>{t('exp_no_data')}</p>
                         </div>
                     ) : (
                         expenses.map((exp) => (
@@ -325,7 +325,7 @@ const ExpenseTracker = () => {
                                     </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <span style={{ fontWeight: 700, color: '#e53e3e', fontSize: '1.1rem' }}>- ₹{exp.amount}</span>
+                                    <span style={{ fontWeight: 700, color: '#e53e3e', fontSize: '1.1rem' }}>- ₹{exp.amount.toLocaleString('en-IN')}</span>
                                     <button
                                         onClick={() => deleteExpense(exp.id)}
                                         style={{

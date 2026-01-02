@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layers, ArrowRight, User } from 'lucide-react';
 
-const SchemeRecommender = () => {
+const SchemeRecommender = ({ t }) => {
     const [profile, setProfile] = useState({
         age: '',
         gender: 'female',
@@ -11,38 +11,6 @@ const SchemeRecommender = () => {
 
     const [recommendations, setRecommendations] = useState([]);
     const [loading, setLoading] = useState(false);
-
-    const schemesData = [
-        {
-            name: "PM Mudra Yojana",
-            benefit: "Loans up to ₹10 Lakhs for small businesses.",
-            eligibility: ["shopkeeper", "artisan", "weaver", "micro-entrepreneur", "farmer"],
-            minAge: 18,
-            maxAge: 65
-        },
-        {
-            name: "Atal Pension Yojana",
-            benefit: "Guaranteed pension of ₹1000-₹5000/month after 60.",
-            eligibility: ["all"],
-            minAge: 18,
-            maxAge: 40
-        },
-        {
-            name: "Mahila Samman Savings Certificate",
-            benefit: "7.5% interest rate for 2 years tenure.",
-            eligibility: ["all"],
-            gender: "female",
-            minAge: 0,
-            maxAge: 100
-        },
-        {
-            name: "PM Kisan Samman Nidhi",
-            benefit: "₹6000 per year income support.",
-            eligibility: ["farmer"],
-            minAge: 18,
-            maxAge: 100
-        }
-    ];
 
     const [showOtherOccupation, setShowOtherOccupation] = useState(false);
     const [expandedScheme, setExpandedScheme] = useState(null);
@@ -66,11 +34,6 @@ const SchemeRecommender = () => {
         setLoading(true);
 
         try {
-            // Note: Ideally, this connects to the backend /api/recommend endpoint
-            // For now, we are simulating the behavior with the updated detailed data locally 
-            // to ensure meaningful demo results without needing the python server running perfectly immediately.
-            // In a real scenario, uncomment the fetch call.
-
             const response = await fetch('http://localhost:8000/api/recommend', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -86,36 +49,115 @@ const SchemeRecommender = () => {
                 const data = await response.json();
                 setRecommendations(data.recommendations);
             } else {
-                // Fallback simulation if backend is offline
                 console.warn("Backend offline, using simulation");
                 setRecommendations([
                     {
                         id: 1,
-                        name: "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
-                        benefit: "Zero balance account, RuPay card with ₹2L accident cover.",
-                        matchScore: 95,
-                        details: "Pradhan Mantri Jan Dhan Yojana (PMJDY) aims to ensure comprehensive financial inclusion. Offers: (1) Basic Savings Bank Deposit (BSBD) account. (2) Free RuPay debit card with accident insurance cover of Rs. 2 lakh. (3) Overdraft upto Rs. 10,000."
+                        keys: {
+                            name: "data_pmjdy_name",
+                            launched: "data_pmjdy_launched",
+                            category: "data_pmjdy_category",
+                            about: "data_pmjdy_about",
+                            target: "data_pmjdy_target",
+                            benefits: "data_pmjdy_benefits",
+                            documents: "data_pmjdy_docs",
+                            features: "data_pmjdy_features"
+                        },
+                        min_age: 18,
+                        matchScore: 95
                     },
                     {
                         id: 2,
-                        name: "Atal Pension Yojana (APY)",
-                        benefit: "Guaranteed pension of ₹1000-₹5000/month after age 60.",
-                        matchScore: 88,
-                        details: "The Government launched APY to encourage workers in unorganized sector to save for retirement. Provides a defined pension of Rs. 1000 to Rs. 5000 per month at age 60, depending on contributions. Minimum age 18, maximum 40."
+                        keys: {
+                            name: "data_pmsby_name",
+                            launched: "data_pmsby_launched",
+                            category: "data_pmsby_category",
+                            about: "data_pmsby_about",
+                            target: "data_pmsby_target",
+                            benefits: "data_pmsby_benefits",
+                            documents: "data_pmsby_docs",
+                            features: "data_pmsby_features"
+                        },
+                        min_age: 18,
+                        matchScore: 92
+                    },
+                    {
+                        id: 3,
+                        keys: {
+                            name: "data_pmjjby_name",
+                            launched: "data_pmjjby_launched",
+                            category: "data_pmjjby_category",
+                            about: "data_pmjjby_about",
+                            target: "data_pmjjby_target",
+                            benefits: "data_pmjjby_benefits",
+                            documents: "data_pmjjby_docs",
+                            features: "data_pmjjby_features"
+                        },
+                        min_age: 18,
+                        matchScore: 90
+                    },
+                    {
+                        id: 4,
+                        keys: {
+                            name: "data_apy_name",
+                            launched: "data_apy_launched",
+                            category: "data_apy_category",
+                            about: "data_apy_about",
+                            target: "data_apy_target",
+                            benefits: "data_apy_benefits",
+                            documents: "data_apy_docs",
+                            features: "data_apy_features"
+                        },
+                        min_age: 18,
+                        matchScore: 88
+                    },
+                    {
+                        id: 5,
+                        keys: {
+                            name: "data_pmmy_name",
+                            launched: "data_pmmy_launched",
+                            category: "data_pmmy_category",
+                            about: "data_pmmy_about",
+                            target: "data_pmmy_target",
+                            benefits: "data_pmmy_benefits",
+                            documents: "data_pmmy_docs",
+                            features: "data_pmmy_features"
+                        },
+                        min_age: 18,
+                        matchScore: 85
+                    },
+                    {
+                        id: 6,
+                        keys: {
+                            name: "data_supi_name",
+                            launched: "data_supi_launched",
+                            category: "data_supi_category",
+                            about: "data_supi_about",
+                            target: "data_supi_target",
+                            benefits: "data_supi_benefits",
+                            documents: "data_supi_docs",
+                            features: "data_supi_features"
+                        },
+                        min_age: 18,
+                        matchScore: 82
                     }
                 ]);
             }
 
         } catch (error) {
             console.error("Error fetching recommendations", error);
-            // Fallback
             setRecommendations([
                 {
                     id: 1,
                     name: "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
-                    benefit: "Zero balance account, RuPay card with ₹2L accident cover.",
-                    matchScore: 95,
-                    details: "Provides universal access to banking facilities with at least one basic banking account for every household, financial literacy, access to credit, insurance and pension facility."
+                    launched: "28 August 2014",
+                    category: "Financial Inclusion / Banking Access",
+                    about: "Provides universal access to banking facilities with a basic savings account, insurance and pension facility.",
+                    target: "Unbanked adults (18+ years)",
+                    benefits: "Zero balance account, ₹2 lakh accident insurance cover.",
+                    documents: "Aadhaar Card, Passport photo",
+                    features: "No minimum balance, Financial literacy programs",
+                    matchScore: 95
                 }
             ]);
         } finally {
@@ -130,10 +172,10 @@ const SchemeRecommender = () => {
     return (
         <div className="page-card animate-fade-in">
             <h2 className="page-title" style={{ fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Layers size={28} color="var(--brand-primary)" /> Scheme Recommender
+                <Layers size={28} color="var(--brand-primary)" /> {t('scheme_title')}
             </h2>
             <p className="page-subtitle" style={{ marginBottom: '2rem' }}>
-                Enter your details to generate a <strong>Detailed Scheme Report</strong> tailored for you.
+                {t('scheme_subtitle')}
             </p>
 
             <div className="scheme-form-grid" style={{
@@ -143,7 +185,7 @@ const SchemeRecommender = () => {
                 marginBottom: '2rem'
             }}>
                 <div className="form-group">
-                    <label className="form-label">Age</label>
+                    <label className="form-label">{t('scheme_label_age')}</label>
                     <input
                         type="number"
                         name="age"
@@ -154,7 +196,7 @@ const SchemeRecommender = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Income (Annual)</label>
+                    <label className="form-label">{t('scheme_label_income')}</label>
                     <input
                         type="number"
                         name="income"
@@ -165,31 +207,31 @@ const SchemeRecommender = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Gender</label>
+                    <label className="form-label">{t('scheme_label_gender')}</label>
                     <select
                         name="gender"
                         value={profile.gender}
                         onChange={handleChange}
                         className="form-input"
                     >
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                        <option value="other">Other</option>
+                        <option value="female">{t('scheme_gender_female')}</option>
+                        <option value="male">{t('scheme_gender_male')}</option>
+                        <option value="other">{t('scheme_gender_other')}</option>
                     </select>
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Occupation</label>
+                    <label className="form-label">{t('scheme_label_occupation')}</label>
                     <select
                         onChange={handleOccupationChange}
                         className="form-input"
                         defaultValue="farmer"
                     >
-                        <option value="farmer">Farmer</option>
-                        <option value="shopkeeper">Shopkeeper</option>
-                        <option value="laborer">Daily Laborer</option>
-                        <option value="student">Student</option>
-                        <option value="homemaker">Homemaker</option>
-                        <option value="other">Other (Type below)</option>
+                        <option value="farmer">{t('scheme_occ_farmer')}</option>
+                        <option value="shopkeeper">{t('scheme_occ_shopkeeper')}</option>
+                        <option value="laborer">{t('scheme_occ_laborer')}</option>
+                        <option value="student">{t('scheme_occ_student')}</option>
+                        <option value="homemaker">{t('scheme_occ_homemaker')}</option>
+                        <option value="other">{t('scheme_occ_other')}</option>
                     </select>
                     {showOtherOccupation && (
                         <input
@@ -199,7 +241,7 @@ const SchemeRecommender = () => {
                             onChange={handleChange}
                             className="form-input animate-fade-in"
                             placeholder="Type your occupation..."
-                            style={{ mt: '10px' }}
+                            style={{ marginTop: '10px' }}
                             autoFocus
                         />
                     )}
@@ -211,13 +253,13 @@ const SchemeRecommender = () => {
                 className="btn-primary"
                 style={{ width: '100%', justifyContent: 'center', fontSize: '1.1rem', padding: '1rem' }}
             >
-                {loading ? "Analyzing Profile..." : "Generate Report"}
+                {loading ? t('scheme_btn_generating') : t('scheme_btn_generate')}
             </button>
 
             {recommendations.length > 0 && (
                 <div style={{ marginTop: '3rem' }}>
                     <h3 className="page-subtitle" style={{ marginBottom: '1.5rem', fontWeight: 700, borderBottom: '2px solid #edf2f7', paddingBottom: '10px' }}>
-                        Recommended Schemes ({recommendations.length})
+                        {t('scheme_rec_title')} ({recommendations.length})
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                         {recommendations.map((scheme, idx) => (
@@ -237,14 +279,16 @@ const SchemeRecommender = () => {
                                     color: scheme.matchScore > 80 ? '#22543D' : '#2B6CB0',
                                     padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600
                                 }}>
-                                    {scheme.matchScore ? `${scheme.matchScore}% Match` : 'Recommended'}
+                                    {scheme.matchScore ? `${scheme.matchScore}% ${t('scheme_match')}` : t('scheme_match')}
                                 </div>
 
                                 <h4 style={{
                                     fontSize: '1.3rem', fontWeight: 700, color: 'var(--brand-dark)', marginBottom: '0.5rem', paddingRight: '100px'
-                                }}>{scheme.name}</h4>
+                                }}>{scheme.keys ? t(scheme.keys.name) : scheme.name}</h4>
 
-                                <p style={{ color: '#4a5568', marginBottom: '1rem', lineHeight: 1.6 }}>{scheme.benefit}</p>
+                                <p style={{ color: '#4a5568', marginBottom: '1rem', lineHeight: 1.6 }}>
+                                    {scheme.keys ? t(scheme.keys.about) : (scheme.benefits || scheme.about)}
+                                </p>
 
                                 {/* Toggle Details */}
                                 <button
@@ -255,17 +299,69 @@ const SchemeRecommender = () => {
                                         display: 'flex', alignItems: 'center', gap: '5px'
                                     }}
                                 >
-                                    {expandedScheme === (scheme.id || idx) ? "Hide Details" : "View Detailed Report"} <ArrowRight size={16} />
+                                    {expandedScheme === (scheme.id || idx) ? t('scheme_hide_details') : t('scheme_view_details')} <ArrowRight size={16} />
                                 </button>
 
                                 {/* Expanded Details Section */}
                                 {expandedScheme === (scheme.id || idx) && (
                                     <div className="animate-fade-in" style={{
-                                        marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px dashed #cbd5e0',
-                                        color: '#2d3748', lineHeight: '1.7', fontSize: '0.95rem'
+                                        marginTop: '1.5rem',
+                                        paddingTop: '1.5rem',
+                                        borderTop: '1px dashed #cbd5e0',
+                                        color: '#2d3748',
+                                        fontSize: '0.95rem'
                                     }}>
-                                        <strong>Scheme Details:</strong><br />
-                                        {scheme.text || scheme.details || "Detailed information not available for this scheme."}
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                                            <div style={{ background: '#f7fafc', padding: '0.8rem', borderRadius: '10px' }}>
+                                                <div style={{ fontSize: '0.85rem', color: '#718096' }}>{t('scheme_launched')}</div>
+                                                <div style={{ fontWeight: 600, color: '#2d3748' }}>{scheme.keys ? t(scheme.keys.launched) : scheme.launched}</div>
+                                            </div>
+                                            <div style={{ background: '#f7fafc', padding: '1rem', borderRadius: '12px' }}>
+                                                <div style={{ fontSize: '0.85rem', color: '#718096' }}>{t('scheme_category')}</div>
+                                                <div style={{ fontWeight: 600, color: '#2d3748' }}>{scheme.keys ? t(scheme.keys.category) : scheme.category}</div>
+                                            </div>
+                                            <div style={{ background: '#f7fafc', padding: '0.8rem', borderRadius: '10px' }}>
+                                                <div style={{ fontSize: '0.75rem', color: '#718096', textTransform: 'uppercase', fontWeight: 700 }}>{t('scheme_age_limit')}</div>
+                                                <div style={{ fontWeight: 600, color: 'var(--brand-dark)' }}>
+                                                    {scheme.min_age || 18}+ {t('calc_years')}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem', padding: '1rem', background: 'rgba(57, 106, 140, 0.05)', borderRadius: '12px', borderLeft: '4px solid var(--brand-primary)' }}>
+                                            <h5 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--brand-dark)' }}>
+                                                <Layers size={16} /> {t('scheme_about_title')}
+                                            </h5>
+                                            <p style={{ lineHeight: 1.6, color: '#4a5568' }}>{scheme.keys ? t(scheme.keys.about) : scheme.about}</p>
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <h5 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--brand-dark)' }}>
+                                                <User size={16} /> {t('scheme_target_title')}
+                                            </h5>
+                                            <p style={{ lineHeight: 1.6, color: '#4a5568' }}>{scheme.keys ? t(scheme.keys.target) : scheme.target}</p>
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <h5 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--brand-dark)' }}>
+                                                <ArrowRight size={16} /> {t('scheme_benefits_title')}
+                                            </h5>
+                                            <p style={{ lineHeight: 1.6, color: '#4a5568' }}>{scheme.keys ? t(scheme.keys.benefits) : scheme.benefits}</p>
+                                        </div>
+
+                                        <div style={{ marginBottom: '1.5rem' }}>
+                                            <h5 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--brand-dark)' }}>
+                                                <Layers size={16} /> {t('scheme_documents_title')}
+                                            </h5>
+                                            <p style={{ lineHeight: 1.6, color: '#4a5568' }}>{scheme.keys ? t(scheme.keys.documents) : scheme.documents}</p>
+                                        </div>
+
+                                        <div style={{ marginBottom: '0.5rem' }}>
+                                            <h5 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--brand-dark)' }}>
+                                                <ArrowRight size={16} /> {t('scheme_features_title')}
+                                            </h5>
+                                            <p style={{ lineHeight: 1.6, color: '#4a5568' }}>{scheme.keys ? t(scheme.keys.features) : scheme.features}</p>
+                                        </div>
                                     </div>
                                 )}
                             </div>

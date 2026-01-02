@@ -205,7 +205,6 @@ body {
 .hero-title {
     font-family: var(--font-serif);
     font-size: 1.8rem;
-    /* Scaled down for mobile */
     line-height: 1.1;
     color: var(--brand-dark);
     font-weight: 800;
@@ -214,7 +213,7 @@ body {
 
 @media (min-width: 768px) {
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
         white-space: nowrap;
     }
 }
@@ -340,20 +339,7 @@ body {
     box-shadow: 0 15px 30px rgba(33, 52, 72, 0.3);
 }
 
-.hero-title {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    line-height: 1.1;
-    color: var(--brand-dark);
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .hero-title {
-        font-size: 4rem;
-    }
-}
+/* Hero title handled above */
 
 .highlight {
     color: var(--brand-primary);
@@ -436,9 +422,8 @@ body {
 
 /* Image Size - Circular and Small */
 .hero-img {
-    width: 300px;
-    /* Fixed width for perfect circle */
-    height: 300px;
+    width: 450px;
+    height: 450px;
     /* Fixed height for perfect circle */
     object-fit: cover;
     /* Ensure image doesn't distort */

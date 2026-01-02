@@ -57,79 +57,92 @@ def get_recommendations(profile):
         {
             "id": 1,
             "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
-            "text": "financial inclusion banking savings account zero balance insurance overdraft facility rupay debit card unbanked households social security poor rural women",
-            "benefit": "Zero balance account, RuPay card with ₹2L accident cover, ₹10k overdraft facility.",
-            "details": "Pradhan Mantri Jan Dhan Yojana (PMJDY) aims to ensure comprehensive financial inclusion of all households in the country by providing universal access to banking facilities with at least one basic bank account to every household, financial literacy, and social security cover. The Scheme offers: (1) Basic Savings Bank Deposit (BSBD) account without minimum balance. (2) Free RuPay debit card with in-built accident insurance cover of Rs. 2 lakh. (3) Access to overdraft facility of upto Rs. 10,000. (4) Easy access to banking services in rural areas through Bank Mitras.",
-            "eligibility": ["all", "unbanked"],
-            "min_age": 10,
+            "launched": "28 August 2014",
+            "category": "Financial Inclusion / Banking Access",
+            "about": "PMJDY aims to provide universal access to banking facilities by ensuring that every unbanked adult has a basic savings bank account. It focuses on financial literacy, access to credit, insurance, and pension services, especially in rural and semi-urban areas.",
+            "target": "Unbanked adults (18+ years), Rural and semi-urban population",
+            "min_age": 18,
             "max_age": 100,
-            "gender": "all"
+            "gender": "all",
+            "benefits": "Zero balance Basic Savings Bank Deposit (BSBD) account, RuPay debit card with ₹2 lakh accident insurance cover, Overdraft facility up to ₹10,000 (subject to eligibility), Direct Benefit Transfer (DBT) of government subsidies",
+            "documents": "Aadhaar Card (preferred), Voter ID / PAN / Driving License / NREGA Card (any one), Passport-size photograph",
+            "features": "No minimum balance required, Banking access via Bank Mitras / BCs in villages, Financial literacy programs",
+            "text": "financial inclusion banking savings account zero balance insurance overdraft facility rupay debit card unbanked households social security poor rural women"
         },
         {
             "id": 2,
             "name": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
-            "text": "accident insurance disability death cover low premium risk coverage 12 rupees per year safety security",
-            "benefit": "Accidental death/disability cover of ₹2 Lakhs for just ₹20/year.",
-            "details": "The Pradhan Mantri Suraksha Bima Yojana (PMSBY) is a one-year personal accident insurance Scheme, renewable from year to year. It offers coverage for death/disability due to an accident and is available to people in the age group of 18 to 70 years having a bank account. Annual premium is Rs 20 per year. Benefit of Rs. 2 Lakh payable on death or permanent total disability and Rs. 1 Lakh on partial disability.",
-            "eligibility": ["all", "account holder"],
+            "launched": "9 May 2015",
+            "category": "Accident Insurance",
+            "about": "PMSBY provides affordable personal accident insurance coverage to protect individuals and families from financial distress due to accidental death or disability.",
+            "target": "Bank account holders",
             "min_age": 18,
             "max_age": 70,
-            "gender": "all"
+            "gender": "all",
+            "benefits": "₹2 lakh for accidental death or permanent total disability, ₹1 lakh for permanent partial disability. Premium: ₹20 per year (auto-debit from bank account)",
+            "documents": "Aadhaar Card, Bank account details, Consent for auto-debit",
+            "features": "One-year renewable policy, Simple claim process, Bank-linked enrollment",
+            "text": "accident insurance disability death cover low premium risk coverage 20 rupees per year safety security"
         },
         {
             "id": 3,
             "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
-            "text": "life insurance death cover term plan family security risk coverage 436 rupees per year",
-            "benefit": "Life insurance cover of ₹2 Lakhs for ₹436/year.",
-            "details": "The Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) is a one-year life insurance Scheme renewable from year to year. It offers coverage of Rs. Two lacs for death due to any reason and is available to people in the age group of 18 to 50 years having a bank account. Annual premium is Rs. 436 per year. It involves convenient bank account linked enrolment and premium payment through auto-debit.",
-            "eligibility": ["all", "account holder"],
+            "launched": "9 May 2015",
+            "category": "Life Insurance",
+            "about": "PMJJBY provides low-cost life insurance coverage to ensure financial security for the family in case of death of the insured person due to any reason.",
+            "target": "Bank account holders",
             "min_age": 18,
             "max_age": 50,
-            "gender": "all"
+            "gender": "all",
+            "benefits": "₹2 lakh life insurance cover (death due to any cause). Premium: ₹436 per year (auto-debit)",
+            "documents": "Aadhaar Card, Bank account details, Consent for auto-debit",
+            "features": "One-year renewable, Offered by LIC and other approved insurers",
+            "text": "life insurance death cover term plan family security risk coverage 436 rupees per year"
         },
         {
             "id": 4,
             "name": "Atal Pension Yojana (APY)",
-            "text": "pension retirement old age security monthly income unorganized sector workers laborers daily wage guarantee",
-            "benefit": "Guaranteed pension of ₹1000-₹5000/month after age 60.",
-            "details": "The Government launched the Atal Pension Yojana (APY) to encourage the workers in unorganized sector to voluntarily save for their retirement. The Scheme provides a defined pension, depending on the contribution and its period. Under APY, the subscribers would receive the fixed minimum pension of Rs. 1000 per month, Rs. 2000 per month, Rs. 3000 per month, Rs. 4000 per month and Rs. 5000 per month at the age of 60 years. Minimum age of joining is 18 years and maximum age is 40 years.",
-            "eligibility": ["worker", "laborer", "unorganized", "all"],
+            "launched": "2015",
+            "category": "Pension / Social Security",
+            "about": "APY encourages workers in the unorganized sector to save for retirement by offering guaranteed monthly pension after the age of 60.",
+            "target": "Workers in unorganized sector",
             "min_age": 18,
             "max_age": 40,
-            "gender": "all"
+            "gender": "all",
+            "benefits": "Guaranteed monthly pension after 60 years of age: ₹1,000 / ₹2,000 / ₹3,000 / ₹4,000 / ₹5,000 (based on contribution)",
+            "documents": "Aadhaar Card, Bank account details, Mobile number",
+            "features": "Government guarantees minimum pension, Minimum contribution period: 20 years, Voluntary exit allowed under conditions",
+            "text": "pension retirement old age security monthly income unorganized sector workers laborers daily wage guarantee"
         },
         {
             "id": 5,
             "name": "Pradhan Mantri MUDRA Yojana (PMMY)",
-            "text": "business loan startup entrepreneur small enterprise shopkeeper artisan weaver shishu kishore tarun collateral free credit msme manufacturing trading services",
-            "benefit": "Collateral-free business loans up to ₹10 Lakhs (Shishu, Kishore, Tarun).",
-            "details": "Pradhan Mantri MUDRA Yojana (PMMY) provides access to institutional collateral free credit to micro enterprises. Categories: (a) Shishu – upto Rs.50,000; (b) Kishore – Above Rs.50,000 and upto Rs.5 lakh; (c) Tarun – Above Rs.5 lakh and upto Rs.10 lakh. Purpose: Non-agricultural activities like poultry, dairy, shopkeeping, trading, etc.",
-            "eligibility": ["entrepreneur", "shopkeeper", "business", "artisan", "weaver", "manufacturer", "trader"],
+            "launched": "8 April 2015",
+            "category": "Business Loan / Credit",
+            "about": "PMMY provides collateral-free loans to micro and small enterprises to promote entrepreneurship, especially in rural and semi-urban areas.",
+            "target": "Micro-entrepreneurs, Small business owners, Self-employed individuals",
             "min_age": 18,
             "max_age": 65,
-            "gender": "all"
+            "gender": "all",
+            "benefits": "Shishu: Up to ₹50,000, Kishore: ₹50,001 – ₹5 lakh, Tarun: ₹5 lakh – ₹10 lakh, Tarun Plus: ₹10 lakh – ₹20 lakh",
+            "documents": "Aadhaar Card, PAN Card, Business proof / simple project report, Bank account details",
+            "features": "No collateral required, Covers non-agricultural & allied activities, Loans via banks, NBFCs, MFIs",
+            "text": "business loan startup entrepreneur small enterprise shopkeeper artisan weaver shishu kishore tarun collateral free credit msme manufacturing trading services"
         },
         {
             "id": 6,
-            "name": "Stand Up India Scheme",
-            "text": "entrepreneurship sc st women business loan greenfield project manufacturing services trading startup scheduled caste tribe bank loan 10 lakh to 1 crore",
-            "benefit": "Loans ₹10L-₹1Cr for SC/ST or Women entrepreneurs for greenfield projects.",
-            "details": "The Stand-up India Scheme promotes entrepreneurship among Scheduled Castes/Scheduled Tribes and Women. Features: Composite Loan between Rs.10 lakh and Rs.1 crore to entrepreneurs above 18 years of age. For setting up greenfield projects in manufacturing, services or trading sector. Repayment in upto seven years.",
-            "eligibility": ["entrepreneur", "sc", "st", "woman", "business"],
+            "name": "Stand Up India Scheme (SUPI)",
+            "launched": "5 April 2016",
+            "category": "Entrepreneurship Promotion",
+            "about": "SUPI promotes entrepreneurship among Women, SC & ST communities by providing financial support for greenfield enterprises.",
+            "target": "Women entrepreneurs, SC/ST entrepreneurs",
             "min_age": 18,
             "max_age": 100,
-            "gender": "female" 
-        },
-        {
-            "id": 7,
-            "name": "Sukanya Samriddhi Yojana",
-            "text": "girl child daughter future education marriage savings high interest tax benefit beti bachao beti padhao",
-            "benefit": "High-interest savings scheme for the girl child.",
-            "details": "A small deposit scheme for the girl child launched as a part of the 'Beti Bachao Beti Padhao' campaign. High interest rate (currently approx 8.2%). Parents can open account for girl child up to age 10. Maturity at age 21 or marriage after 18.",
-            "eligibility": ["parent", "guardian"],
-            "min_age": 0,
-            "max_age": 10,
-            "gender": "female" 
+            "gender": "all",
+            "benefits": "Composite loan from ₹10 lakh to ₹1 crore (Upcoming: up to ₹2 crore for first-time women/SC/ST entrepreneurs)",
+            "documents": "Aadhaar Card, PAN Card, Caste certificate (for SC/ST), Business plan / project report, Bank account details",
+            "features": "Repayment up to 7 years, Moratorium period: 18 months, Online guidance via standupmitra.in and jansamarth.in",
+            "text": "entrepreneurship sc st women business loan greenfield project manufacturing services trading startup scheduled caste tribe bank loan 10 lakh to 1 crore"
         }
     ]
 
@@ -176,9 +189,15 @@ def get_recommendations(profile):
         if final_score > 10: # Threshold
             scored_schemes.append({
                 "name": scheme['name'],
-                "benefit": scheme['benefit'],
-                "score": final_score,
-                "tags": [w for w in scheme['text'].split() if w in user_text.split()][:3] # Explainable AI: Show matching keywords
+                "launched": scheme.get('launched'),
+                "category": scheme.get('category'),
+                "about": scheme.get('about'),
+                "target": scheme.get('target'),
+                "benefits": scheme.get('benefits'),
+                "documents": scheme.get('documents'),
+                "features": scheme.get('features'),
+                "matchScore": final_score,
+                "tags": [w for w in scheme['text'].split() if w in user_text.split()][:3]
             })
 
     # 5. Sort & Return

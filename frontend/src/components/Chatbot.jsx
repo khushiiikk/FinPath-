@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Sparkles, ArrowRight, DollarSign, Calculator, FileText, Info } from 'lucide-react';
 
-const Chatbot = ({ setActiveTab }) => {
+const Chatbot = ({ setActiveTab, t }) => {
     const [messages, setMessages] = useState([
         {
             id: 1,
-            text: "Namaste! I am FinBot. How can I help you today?",
+            text: t('bot_greeting'),
             sender: 'bot',
             type: 'menu' // Special type to show options
         }
@@ -27,7 +27,7 @@ const Chatbot = ({ setActiveTab }) => {
         setTimeout(() => {
             const botResponse = {
                 id: Date.now() + 1,
-                text: `Redirecting you to ${option.label}...`,
+                text: `${t('bot_redirect')} ${option.label}...`,
                 sender: 'bot'
             };
             setMessages(prev => [...prev, botResponse]);
@@ -41,10 +41,10 @@ const Chatbot = ({ setActiveTab }) => {
     };
 
     const menuOptions = [
-        { label: "Track Expenses", target: "expenses", icon: <DollarSign size={18} />, color: "#48bb78" },
-        { label: "Government Schemes", target: "schemes", icon: <FileText size={18} />, color: "#4299e1" },
-        { label: "SIP Calculator", target: "calculator", icon: <Calculator size={18} />, color: "#ed8936" },
-        { label: "About Developer", target: "about", icon: <Info size={18} />, color: "#9f7aea" },
+        { label: t('bot_menu_track'), target: "expenses", icon: <DollarSign size={18} />, color: "#48bb78" },
+        { label: t('bot_menu_schemes'), target: "schemes", icon: <FileText size={18} />, color: "#4299e1" },
+        { label: t('bot_menu_calc'), target: "calculator", icon: <Calculator size={18} />, color: "#ed8936" },
+        { label: t('bot_menu_about'), target: "about", icon: <Info size={18} />, color: "#9f7aea" },
     ];
 
     return (
@@ -102,9 +102,9 @@ const Chatbot = ({ setActiveTab }) => {
                     }}>
                         <img src="/finbot-icon.jpg" alt="Bot" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 700 }}>FinBot Assistant</h2>
+                    <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 700 }}>{t('bot_name')}</h2>
                     <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.8, display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <Sparkles size={12} /> Online
+                        <Sparkles size={12} /> {t('bot_status')}
                     </p>
                 </div>
 

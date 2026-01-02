@@ -61,7 +61,9 @@ const UserProfile = ({ user, onLogout, t }) => {
                         <Award size={20} color="var(--brand-primary)" />
                         <div>
                             <div style={{ fontSize: '0.85rem', color: '#718096' }}>{t('profile_state')}</div>
-                            <div style={{ fontWeight: 600, color: '#2d3748' }}>{user.state || 'N/A'}</div>
+                            <div style={{ fontWeight: 600, color: '#2d3748' }}>
+                                {user.state ? t(`state_${user.state.toLowerCase().replace(/ /g, '_')}`) : 'N/A'}
+                            </div>
                         </div>
                     </div>
                 </div>

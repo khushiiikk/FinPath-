@@ -25,8 +25,7 @@ const Footer = ({ t }) => {
                         <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', fontWeight: 700 }}>FinPath</h3>
                     </div>
                     <p style={{ color: '#a0aec0', lineHeight: 1.6, marginBottom: '2rem' }}>
-                        Empowering rural India with smart financial tools.
-                        Track expenses, find government schemes, and grow your wealth.
+                        {t('footer_brand_desc')}
                     </p>
                     <div style={{ display: 'flex', gap: '15px' }}>
                         {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
@@ -48,11 +47,17 @@ const Footer = ({ t }) => {
                 <div>
                     <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--brand-accent)' }}>{t('footer_links')}</h4>
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                        {['Home', 'Expense Tracker', 'Scheme Finder', 'Financial Calculator', 'Login'].map((item) => (
-                            <li key={item}>
+                        {[
+                            { key: 'nav_home', label: t('nav_home') },
+                            { key: 'nav_track', label: t('nav_track') },
+                            { key: 'nav_schemes', label: t('nav_schemes') },
+                            { key: 'nav_calc', label: t('nav_calc') },
+                            { key: 'login_btn', label: t('login_btn') }
+                        ].map((item) => (
+                            <li key={item.key}>
                                 <a href="#" style={{ color: '#cbd5e0', textDecoration: 'none', transition: 'color 0.2s' }}
                                     className="hover:text-white">
-                                    {item}
+                                    {item.label}
                                 </a>
                             </li>
                         ))}
@@ -65,7 +70,7 @@ const Footer = ({ t }) => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                         <div style={{ display: 'flex', gap: '15px', color: '#cbd5e0' }}>
                             <User size={20} color="var(--brand-primary)" />
-                            <span>Khushi Kumari</span>
+                            <span>{t('contact_name')}</span>
                         </div>
                         <div style={{ display: 'flex', gap: '15px', color: '#cbd5e0' }}>
                             <Mail size={20} color="var(--brand-primary)" />
@@ -73,7 +78,7 @@ const Footer = ({ t }) => {
                         </div>
                         <div style={{ display: 'flex', gap: '15px', color: '#cbd5e0' }}>
                             <MapPin size={20} color="var(--brand-primary)" />
-                            <span>New Delhi, India</span>
+                            <span>{t('contact_location')}</span>
                         </div>
                     </div>
                 </div>
@@ -89,7 +94,7 @@ const Footer = ({ t }) => {
                 fontSize: '0.9rem'
             }}>
                 <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
-                    &copy; 2026 FinPath. Made with <Heart size={14} color="#e53e3e" fill="#e53e3e" /> for Bharat.
+                    &copy; 2026 FinPath. {t('footer_made_with')} <Heart size={14} color="#e53e3e" fill="#e53e3e" /> {t('footer_for_bharat')}.
                 </p>
             </div>
         </footer>

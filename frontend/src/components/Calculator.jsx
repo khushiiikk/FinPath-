@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calculator, TrendingUp } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-const FinancialCalculator = () => {
+const FinancialCalculator = ({ t }) => {
     const [monthlyInvestment, setMonthlyInvestment] = useState(500);
     const [years, setYears] = useState(10);
     const [rate, setRate] = useState(12); // Assuming 12% for mutual funds/SIP
@@ -43,19 +43,19 @@ const FinancialCalculator = () => {
 
     // Metaphor logic
     const getTreeStage = () => {
-        if (totalValue < 50000) return "🌱 Sapling";
-        if (totalValue < 200000) return "🌿 Small Plant";
-        if (totalValue < 1000000) return "🌳 Strong Tree";
-        return "🍎 Fruit Bearing Tree";
+        if (totalValue < 50000) return t('calc_tree_1');
+        if (totalValue < 200000) return t('calc_tree_2');
+        if (totalValue < 1000000) return t('calc_tree_3');
+        return t('calc_tree_4');
     };
 
     return (
         <div className="page-card animate-fade-in" style={{ padding: '1.5rem', maxWidth: '900px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '1.4rem', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem', fontWeight: 700, color: 'var(--brand-dark)' }}>
-                <Calculator size={22} color="var(--brand-primary)" /> SIP Calculator
+                <Calculator size={22} color="var(--brand-primary)" /> {t('calc_title')}
             </h2>
             <p style={{ marginBottom: '1.5rem', fontSize: '0.9rem', color: '#666' }}>
-                See how small savings grow over time.
+                {t('calc_subtitle')}
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
@@ -65,7 +65,7 @@ const FinancialCalculator = () => {
                     {/* Monthly Investment Slider */}
                     <div style={{ background: '#f8f9fa', padding: '1rem', borderRadius: '12px' }}>
                         <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>
-                            <span>Monthly Investment</span>
+                            <span>{t('calc_label_investment')}</span>
                             <span style={{ color: 'var(--brand-primary)' }}>₹{monthlyInvestment.toLocaleString('en-IN')}</span>
                         </label>
                         <input
@@ -82,8 +82,8 @@ const FinancialCalculator = () => {
                     {/* Duration Slider */}
                     <div style={{ background: '#f8f9fa', padding: '1rem', borderRadius: '12px' }}>
                         <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>
-                            <span>Duration</span>
-                            <span style={{ color: 'var(--brand-primary)' }}>{years} Years</span>
+                            <span>{t('calc_label_duration')}</span>
+                            <span style={{ color: 'var(--brand-primary)' }}>{years} {t('calc_years')}</span>
                         </label>
                         <input
                             type="range"
@@ -99,7 +99,7 @@ const FinancialCalculator = () => {
                     {/* Interest Rate Slider */}
                     <div style={{ background: '#f8f9fa', padding: '1rem', borderRadius: '12px' }}>
                         <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>
-                            <span>Expected Return</span>
+                            <span>{t('calc_label_returns')}</span>
                             <span style={{ color: 'var(--brand-primary)' }}>{rate}%</span>
                         </label>
                         <input
@@ -122,7 +122,7 @@ const FinancialCalculator = () => {
                         color: '#2c5282',
                         fontSize: '0.85rem'
                     }}>
-                        <strong>💡 Insight:</strong> Starting with just ₹{monthlyInvestment}/mo can grow significantly due to compounding!
+                        <strong>💡 {t('calc_insight')}:</strong> {t('calc_insight_text')}
                     </div>
                 </div>
 
@@ -138,18 +138,18 @@ const FinancialCalculator = () => {
                         {/* Summary Cards */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
                             <div style={{ padding: '0.8rem', background: '#f7fafc', borderRadius: '10px' }}>
-                                <div style={{ fontSize: '0.75rem', color: '#718096', marginBottom: '4px' }}>Invested Amount</div>
+                                <div style={{ fontSize: '0.75rem', color: '#718096', marginBottom: '4px' }}>{t('calc_invested_amt')}</div>
                                 <div style={{ fontSize: '1rem', fontWeight: 700, color: '#2d3748' }}>₹{investedAmount.toLocaleString('en-IN')}</div>
                             </div>
                             <div style={{ padding: '0.8rem', background: '#f0fff4', borderRadius: '10px' }}>
-                                <div style={{ fontSize: '0.75rem', color: '#276749', marginBottom: '4px' }}>Est. Returns</div>
+                                <div style={{ fontSize: '0.75rem', color: '#276749', marginBottom: '4px' }}>{t('calc_est_returns')}</div>
                                 <div style={{ fontSize: '1rem', fontWeight: 700, color: '#48bb78' }}>+₹{(totalValue - investedAmount).toLocaleString('en-IN')}</div>
                             </div>
                         </div>
 
                         {/* Total Value Big Display */}
                         <div style={{ textAlign: 'center', marginBottom: '1.5rem', padding: '1rem', background: 'var(--brand-dark)', borderRadius: '12px', color: 'white' }}>
-                            <div style={{ fontSize: '0.8rem', opacity: 0.8, marginBottom: '5px' }}>Total Value after {years} Years</div>
+                            <div style={{ fontSize: '0.8rem', opacity: 0.8, marginBottom: '5px' }}>{t('calc_total_value')} {years} {t('calc_years')}</div>
                             <div style={{ fontSize: '2rem', fontWeight: 800 }}>₹{totalValue.toLocaleString('en-IN')}</div>
                             <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', background: 'rgba(255,255,255,0.2)', display: 'inline-block', padding: '2px 10px', borderRadius: '12px' }}>
                                 {getTreeStage()}

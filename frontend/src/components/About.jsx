@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Heart, Globe, Zap, Code, Mail, Linkedin, ArrowRight, Lightbulb } from 'lucide-react';
 
@@ -85,23 +84,23 @@ const About = ({ t }) => {
                 {/* Left: The Narrative */}
                 <div className="animate-slide-up" style={{ animationDelay: '0.1s' }}>
                     <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--brand-dark)' }}>
-                        The Story Behind <span style={{ color: 'var(--brand-primary)' }}>FinPath</span>
+                        {t('about_story_title').split(' ').slice(0, -1).join(' ')} <span style={{ color: 'var(--brand-primary)' }}>{t('about_story_title').split(' ').pop()}</span>
                     </h2>
                     <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#4a5568', marginBottom: '1.5rem' }}>
-                        Finance is often wrapped in jargon that makes it inaccessible to millions. While working on technology solutions, I realized that true empowerment comes not just from earning money, but from knowing how to grow it.
+                        {t('about_story_p1')}
                     </p>
                     <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#4a5568', marginBottom: '2rem' }}>
-                        I created <strong>FinPath</strong> with a simple mission: to help anyone—regardless of language or background—understand their financial potential. Access to government schemes and smart investments shouldn't be a privilege; it should be a right.
+                        {t('about_story_p2')}
                     </p>
 
                     <div style={{ display: 'flex', gap: '15px' }}>
                         <div style={{ borderLeft: '3px solid var(--brand-primary)', paddingLeft: '15px' }}>
                             <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--brand-dark)' }}>8+</div>
-                            <div style={{ fontSize: '0.9rem', color: '#718096' }}>Languages Supported</div>
+                            <div style={{ fontSize: '0.9rem', color: '#718096' }}>{t('about_languages_count').replace('8+ ', '')}</div>
                         </div>
                         <div style={{ borderLeft: '3px solid #ed8936', paddingLeft: '15px' }}>
                             <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--brand-dark)' }}>AI</div>
-                            <div style={{ fontSize: '0.9rem', color: '#718096' }}>Powered Guidance</div>
+                            <div style={{ fontSize: '0.9rem', color: '#718096' }}>{t('about_ai_guidance')}</div>
                         </div>
                     </div>
                 </div>
@@ -117,7 +116,7 @@ const About = ({ t }) => {
                     textAlign: 'center'
                 }}>
                     <div style={{ position: 'absolute', top: '-10px', right: '30px', background: '#F6E05E', color: '#744210', padding: '5px 15px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700 }}>
-                        CREATOR
+                        {t('about_creator')}
                     </div>
 
                     {/* Profile Image */}
@@ -133,17 +132,16 @@ const About = ({ t }) => {
                         <img src="/khushi.jpg" alt="Khushi Kumari" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
 
-                    <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>Khushi Kumari</h3>
-                    <p style={{ color: 'var(--brand-primary)', fontWeight: 500, marginBottom: '1.5rem' }}>AI and ML Engineer</p>
+                    <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>{t('contact_name')}</h3>
+                    <p style={{ color: 'var(--brand-primary)', fontWeight: 500, marginBottom: '1.5rem' }}>{t('about_creator_role')}</p>
 
                     <p style={{ color: '#718096', fontSize: '1rem', lineHeight: '1.6', marginBottom: '2rem' }}>
-                        Final year Computer Science student at <strong>Dronacharya College of Engineering</strong>.
-                        I am passionate about building intelligent systems that solve real world problems and bridge the digital divide.
+                        {t('about_creator_desc')}
                     </p>
 
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                         <SocialButton href="https://www.linkedin.com/in/khushikumari28" text="LinkedIn" icon={<Linkedin size={16} />} color="#0077b5" />
-                        <SocialButton href="mailto:k.khushikumari.mail@gmail.com" text="Email Me" icon={<Mail size={16} />} color="#EA4335" />
+                        <SocialButton href="mailto:k.khushikumari.mail@gmail.com" text={t('about_email_me')} icon={<Mail size={16} />} color="#EA4335" />
                     </div>
                 </div>
             </div>
@@ -151,31 +149,31 @@ const About = ({ t }) => {
             {/* 3. "Under the Hood" - Professional Tech Showcase */}
             <div style={{ background: 'white', padding: '4rem 2rem', textAlign: 'center' }}>
                 <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '3rem', color: 'var(--brand-dark)' }}>
-                    Professional Engineering
+                    {t('about_eng_title')}
                 </h2>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
                     <TechCard
                         icon={<Code size={32} color="#4299e1" />}
-                        title="Modern Frontend"
-                        desc="Built with React for a seamless, diverse user experience across devices."
+                        title={t('about_tech_f_title')}
+                        desc={t('about_tech_f_desc')}
                     />
                     <TechCard
                         icon={<Zap size={32} color="#ecc94b" />} // Changed to Zap or Brain for AI
-                        title="Intelligent Backend"
-                        desc="FastAPI driven Python engine handling NLP and real-time data processing."
+                        title={t('about_tech_b_title')}
+                        desc={t('about_tech_b_desc')}
                     />
                     <TechCard
                         icon={<Lightbulb size={32} color="#48bb78" />}
-                        title="Machine Learning"
-                        desc="Vector Space Models and Cosine Similarity for personalized scheme recommendations."
+                        title={t('about_tech_m_title')}
+                        desc={t('about_tech_m_desc')}
                     />
                 </div>
             </div>
 
             {/* 4. Footer Quote */}
             <div style={{ padding: '3rem', textAlign: 'center', color: '#718096', fontStyle: 'italic' }}>
-                "Technology is best when it brings people together."
+                "{t('about_quote')}"
             </div>
 
         </div>

@@ -18,7 +18,7 @@ const Home = ({ setActiveTab, t }) => {
     }, []);
 
     return (
-        <div className="home-container" style={{ overflowX: 'hidden', position: 'relative' }}>
+        <div className="home-container" style={{ overflowX: 'hidden' }}>
             {/* Hero Section */}
             <div className="hero-section" style={{ position: 'relative', zIndex: 1 }}>
                 <DoodleBackground />
